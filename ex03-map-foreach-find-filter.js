@@ -11,12 +11,12 @@ const products = [
 
 tax = 0.15;
 
-// 1
+
 const formattedProducts = products.map(
   (product) => `${product.name} - ${product.category}`
 );
 
-//2
+
 const taxedProducts = products.map(
   (product) =>
     `name: ${product.name}, price: ${product.price.toFixed(2) * (1 + tax)},`
