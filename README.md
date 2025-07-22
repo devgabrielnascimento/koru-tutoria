@@ -1,6 +1,6 @@
-## Getting Started
+# Getting Started
 
-### 📜 Prerequisites
+## 📜 Prerequisites
 
 Ensure that Node.js (<https://nodejs.org/>) is set up on your development machine prior to starting—version 14 or above is preferred
 
@@ -24,4 +24,4 @@ All exercise files are at the project’s root. To run one, type as:
 node ex01-function-sum.js
 ```
 
-📢 _Replace ex01-function-sum.js with the name of the exercise you want to test, such as ex02-function-is-adult, ex03-map-filter-find, etc._
+📢 _Replace ex01-function-sum.js with the name of the exercise you want to test, such as ex02-function-is-adult.js, ex03-map-foreach-find-filter.js, etc._
