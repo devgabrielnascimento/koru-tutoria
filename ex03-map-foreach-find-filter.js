@@ -42,11 +42,11 @@ const students = [
   { id: 4, name: "David", isActive: false, grade: 25 },
 ];
 
-const findedStudent = students.find((student) => student.id === 3);
 
 const inativedStudents = students.filter(
   (student) => student.isActive == false
 );
+const findedStudent = students.find((student) => student.id === 3);
 const lowGradeStudents = students.filter((student) => student.grade < 70);
 const studentsWithHighGrade = students
   .filter((student) => student.grade > 85)
