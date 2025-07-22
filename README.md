@@ -18,7 +18,7 @@ Ensure that Node.js (<https://nodejs.org/>) is set up on your development mach
 
 ### ▶ How to Run
 
-All exercise files—from ex_01.js to ex_15.js—reside at the project’s root. To run one, type as:
+All exercise files are at the project’s root. To run one, type as:
 
 ```bash
 node ex01-function-sum.js
