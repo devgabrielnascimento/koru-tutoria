@@ -1,29 +1,12 @@
-//Crie uma função que recebe um objeto person e retorna um novo objeto, com todas as propriedades do original, mais uma propriedade "isAdult" (true se age >= 18)
-
-const person = {
-  name: "Gabriel",
-  age: 22,
-};
-
-function isAdult(person) {
-  const newPerson = {
-    ...person,
-    isAdult: person.age >= 18 ? true : "This person is not adult",
-  };
-  return newPerson;
-}
-
-console.log(isAdult(person));
-
 // 1. Use map para criar um array de strings formatadas como
 //    "Nome do produto - Categoria" para cada produto
 // 2. Use map para criar um array com os preços de todos os produtos com impostos (15% a mais)
 // 3. Combine forEach com um acumulador externo para calcular o valor total de todos os produtos
 
 const products = [
-  { name: "Product 1", category: "Category 1", price: 10 },
-  { name: "Product 2", category: "Category 2", price: 20 },
-  { name: "Product 3", category: "Category 3", price: 30 },
+  { name: "Milk", category: "Lactose", price: 10 },
+  { name: "Bread", category: "Grain", price: 20 },
+  { name: "Chicken", category: "Meat", price: 30 },
 ];
 
 tax = 0.15;
@@ -43,9 +26,9 @@ let totalPrice = 0;
 products.forEach((product) => {
   totalPrice += product.price;
 });
-console.log("Formatted Products: ", formattedProducts);
-console.log("Taxed Products: ", taxedProducts);
-console.log("Total Price: ", totalPrice);
+console.log("Formatted products: ", formattedProducts);
+console.log("Taxed products: ", taxedProducts);
+console.log("Total price of all products: ", totalPrice);
 
 // 1. Use filter para encontrar estudantes inativos
 // 2. Use find para encontrar o estudante com id = 3
@@ -64,11 +47,11 @@ const findedStudent = students.find((student) => student.id === 3);
 const inativedStudents = students.filter(
   (student) => student.isActive == false
 );
-console.log(findedStudent);
-console.log(inativedStudents);
-const studentsTakedLow70 = students.filter((student) => student.grade < 70);
-console.log("Students taked low 70: ", studentsTakedLow70);
+const lowGradeStudents = students.filter((student) => student.grade < 70);
 const studentsWithHighGrade = students
   .filter((student) => student.grade > 85)
   .map((student) => student.name);
-console.log(studentsWithHighGrade);
+console.log("All inatived students",inativedStudents);
+console.log("Finded student",findedStudent);
+console.log("All low grade students with 70 or below", lowGradeStudents);
+console.log("All high grade students with 85 or above", studentsWithHighGrade);
