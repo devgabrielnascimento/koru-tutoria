@@ -34,7 +34,7 @@ async function currencyConverter(convertFrom, convertTo, amount) {
 
 function main() {
   if (!isValidCurrency(amount)) {
-    console.error("Invalid amount format. Use '1.000,00' or '1000.00'.");
+    console.error("Invalid amount format. Use '1.000,00','1000.00 or 1000'.");
     return;
   }
 
