@@ -1,12 +1,12 @@
 const axios = require("axios");
 const prompt = require("prompt-sync")({ sigint: true });
-let convertFrom = prompt(
+const convertFrom = prompt(
   "Enter the currency you want to convert from (e.g., USD): "
 ).toUpperCase();
-let convertTo = prompt(
+const convertTo = prompt(
   "Enter the currency you want to convert to (e.g., BRL): "
 ).toUpperCase();
-let amount = prompt("Enter the amount to convert: ");
+const amount = prompt("Enter the amount to convert: ");
 
 function isValidCurrency(amount) {
   return /^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/.test(amount);
