@@ -1,8 +1,23 @@
-# Getting Started
+# 🚀 Getting Started
 
 ## 📜 Prerequisites
 
-Ensure that Node.js (<https://nodejs.org/>) is set up on your development machine prior to starting—version 14 or above is preferred
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine — version 14 or higher is recommended.
+
+---
+
+## 📚 Exercise List
+
+```plaintext
+📁 01-functions-exercises
+├── 📑 ex01-function-sum.js
+├── 📑 ex02-function-is-adult.js
+└── 📑 ex03-map-foreach-find-filter.js
+
+📁 02-api-requests-using-axios-fetch
+└── 📑 ex04-currency-exchange-api-fetch.js
+      📢 Dependencies: This exercise requires dependencies. Use `npm install` before running.
+```
 
 ### 📥 Installing
 
@@ -18,7 +33,11 @@ Ensure that Node.js (<https://nodejs.org/>) is set up on your development mach
 
 ### ▶ How to Run
 
-All exercise files are at the project’s root. To run one, type as:
+All exercise files are located inside their respective folders. To run one, type as:
+
+```bash
+cd path/to/exercise-folder
+```
 
 ```bash
 node ex01-function-sum.js
