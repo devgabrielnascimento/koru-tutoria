@@ -1,48 +1,48 @@
 const axios = require("axios");
 const prompt = require("prompt-sync")({ sigint: true });
-let convertFrom = prompt("Enter the currency you want to convert from (e.g., USD): ");
-let convertTo = prompt("Enter the currency you want to convert to (e.g., BRL): ");
+let convertFrom = prompt(
+  "Enter the currency you want to convert from (e.g., USD): "
+).toUpperCase();
+let convertTo = prompt(
+  "Enter the currency you want to convert to (e.g., BRL): "
+).toUpperCase();
 let amount = prompt("Enter the amount to convert: ");
-
 
 const url = `https://api.frankfurter.app/latest?base=${convertFrom}&symbols=${convertTo}`;
 
-fetch(url, {
-})
-  .then((response) => response.json())
-  .then((data) => {
-    if (!data.rates || !data.rates[convertTo]) {
-      throw new Error(
-        `This API does not support conversion from ${convertFrom} para ${convertTo}`
-      );
-    }
+function isValidCurrency(amount) {
+  return /^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/.test(amount);
+}
+async function currencyConverter(convertFrom, convertTo, amount) {
+  try {
+    const response = await axios.get(url);
+    const data = response.data;
 
-    const rate = data.rates[convertTo];
-    const convertedAmount = (amount * rate).toFixed(2);
-
-    console.log(`${amount} ${convertFrom} = ${convertedAmount} ${convertTo}`);
-  })
-
-  .catch((error) => console.error("Erro:", error.message));
-
-  
-axios
-  .get(url)
-  .then(function (response) {
-    if (!response.data.rates || !response.data.rates[convertTo]) {
+    if (data.error || !response.data.rates[convertTo]) {
       throw new Error(
         `This API does not support conversion from ${convertFrom} to ${convertTo}`
       );
+    } else {
+      const rate = data.rates[convertTo];
+      const convertedAmount = (amount * rate).toFixed(2);
+      console.log(`${amount.toLocaleString("pt-BR")} ${convertFrom} = ${convertedAmount} ${convertTo}`);
     }
-    console.log(
-      `${amount} ${convertFrom} = ${(
-        amount * response.data.rates[convertTo]
-      ).toFixed(2)} ${convertTo}`
-    );
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-  .finally(function () {
-    console.log("Conversion attempt finished.");
-  });
+  } catch (error) {
+    console.error("Erro:", error.message);
+  }
+}
+
+function main() {
+  if (!isValidCurrency(amount)) {
+    console.error("Invalid amount format. Use '1.000,00' or '1000.00'.");
+    return;
+  }
+
+  const numericAmount = parseFloat(amount.replace(/\./g, "").replace(".", ","));
+  currencyConverter(
+    convertFrom,
+    convertTo,
+    numericAmount
+  );
+}
+main();
