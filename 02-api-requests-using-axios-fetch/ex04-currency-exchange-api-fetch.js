@@ -8,25 +8,22 @@ let convertTo = prompt(
 ).toUpperCase();
 let amount = prompt("Enter the amount to convert: ");
 
-const url = `https://api.frankfurter.app/latest?base=${convertFrom}&symbols=${convertTo}`;
-
 function isValidCurrency(amount) {
   return /^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/.test(amount);
 }
 async function currencyConverter(convertFrom, convertTo, amount) {
+  const url = `https://api.frankfurter.app/latest?base=${convertFrom}&symbols=${convertTo}`;
   try {
     const response = await axios.get(url);
     const data = response.data;
 
-    if (data.error || !response.data.rates[convertTo]) {
-      throw new Error(
-        `This API does not support conversion from ${convertFrom} to ${convertTo}`
-      );
-    } else {
-      const rate = data.rates[convertTo];
-      const convertedAmount = (amount * rate).toFixed(2);
-      console.log(`${amount.toLocaleString("pt-BR")} ${convertFrom} = ${convertedAmount} ${convertTo}`);
-    }
+    const rate = data.rates[convertTo];
+    const convertedAmount = (amount * rate).toFixed(2);
+    console.log(
+      `${amount.toLocaleString(
+        "pt-BR"
+      )} ${convertFrom} = ${convertedAmount} ${convertTo}`
+    );
   } catch (error) {
     console.error("Erro:", error.message);
   }
@@ -38,11 +35,7 @@ function main() {
     return;
   }
 
-  const numericAmount = parseFloat(amount.replace(/\./g, "").replace(".", ","));
-  currencyConverter(
-    convertFrom,
-    convertTo,
-    numericAmount
-  );
+  const numericAmount = parseFloat(amount.replace(/\./g, "").replace(",", "."));
+  currencyConverter(convertFrom, convertTo, numericAmount);
 }
 main();
